@@ -1,0 +1,20 @@
+{
+  "name": "GeoShake",
+  "description": "Feel a rumble?",
+  "launch_path": "/",
+  "icons": {
+    "128": "/img/icon-128.png"
+  },
+  "developer": {
+    "name": "Tim Stone",
+    "url": "http://fetimo.com"
+  },
+  "default_locale": "en",
+  "launch_path": "/index.html",
+  "permissions": {
+    "geolocation": {
+      "description": "Required for autocompletion in the share screen",
+      "access": "read"
+    }
+  }
+}
