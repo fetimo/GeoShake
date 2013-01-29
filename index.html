@@ -30,25 +30,26 @@
                 while (l--) {
                     var date = new Date(data.unids[l].datetime),
                         now = new Date(),
-                        day = 86400000,
+                        day = 86400000, //day in ms
                         diffDays = Math.round(Math.abs((date.getTime() - now.getTime())/(day)));
 
                         L.marker([data.unids[l].lat, data.unids[l].lon]).addTo(map).bindPopup("<b>Hello!</b><br>I had a magnitude of " + data.unids[l].mag + ".");
 
                     if (diffDays < 60) {
-                        window.navigator.vibrate([200, 100, 200]);
+                        //window.navigator.vibrate([200, 100, 200]);
                         recent+=1;
+                        window.navigator.vibrate([data.unids[l].mag * 100]);
                     }
                 }
 
-                if (recent) {
-                    //vibrate stronger for each earthquake
-                    var vibrates = [];
-                    for (var i = 1; i <= recent; i++) {
-                       vibrates.push(i * 100);
-                    }
-                    window.navigator.vibrate(vibrates);
-                }
+                // if (recent) {
+                //     //vibrate stronger for each earthquake
+                //     var vibrates = [];
+                //     for (var i = 1; i <= recent; i++) {
+                //        vibrates.push(i * 100);
+                //     }
+                //     window.navigator.vibrate(vibrates);
+                // }
 
                 document.getElementById('info').innerHTML = 'There have been ' + recent + ' earthquakes in the last 60 days.';
             }
